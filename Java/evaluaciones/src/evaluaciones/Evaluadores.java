@@ -1,22 +1,24 @@
+
 package evaluaciones;
 
 import static evaluaciones.Proyecto.ruta;
 import static evaluaciones.Proyecto.separador;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
-public class Proyectos extends Proyecto {
-
+/**
+ *
+ * @author luisi
+ */
+public class Evaluadores extends Proyecto{
+    
     ArrayList<Proyecto> lista = new ArrayList<>();
+    public Evaluadores() {
 
-    public Proyectos() {
     }
 
-    public Proyectos(String v_folio) {
+    public Evaluadores(String v_folio) {
         super(v_folio);
     }
 
@@ -56,20 +58,4 @@ public class Proyectos extends Proyecto {
 
         }
     }
-
-    public void writeAll() {
-        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(ruta))) {
-            for (int i = 0; i < lista.size(); i++) {
-                String s = String.format("%s|%s|%s|%s\n",
-                        lista.get(i).getFolio(),
-                        lista.get(i).getEmpresa(),
-                        lista.get(i).getProyecto(),
-                        String.valueOf(lista.get(i).getMonto()));
-                bw.write(s);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
