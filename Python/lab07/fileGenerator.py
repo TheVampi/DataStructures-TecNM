@@ -14,15 +14,18 @@ def prioridadRandom():
 #def segundosRandom():
 #   seg = int()
 #    return(seg)
+print(procesosRandom())
 
-#Creando el archivo
-with open("lab07\procesos.csv","w") as archivo:
-    for i in range(1,procesosRandom()):
+
+for i in range (1,procesosRandom()):
+    with open("lab07\procesos.csv","a+") as archivo:
         #Sacando la hora actual del sistema
         ahora = fecha.datetime.now()
         horaActual = ahora.time()
         #Escribiendo
         linea = str(i)+","+str(horaActual)+","+str(cpuRandom())+","+str(prioridadRandom())+"\n"
         archivo.writelines(linea)
-        time.sleep(random.randint(1,15))
-    archivo.close()
+        archivo.close()
+    time.sleep(random.randint(1,15))
+
+
